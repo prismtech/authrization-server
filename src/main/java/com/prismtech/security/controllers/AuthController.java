@@ -1,10 +1,10 @@
-package com.repyute.security.controllers;
+package com.prismtech.security.controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.repyute.security.model.Articles;
-import com.repyute.security.model.EmployeeDetailsResponse;
+import com.prismtech.security.model.Articles;
+import com.prismtech.security.model.EmployeeDetailsResponse;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.FormBody;
@@ -13,6 +13,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,6 +73,25 @@ public class AuthController {
 		return accessArticlesApi(accessToken.access_token);
 	}
 
+	@RequestMapping("/employee")
+	public void getEmployee(@RequestParam String code) throws IOException {
+		log.info("######################### employee  accessing ###################################");
+
+		System.out.println("hello inside code");
+	}
+
+	@RequestMapping("/employee-session")
+	public void getSession(@RequestParam String code) throws IOException {
+		log.info("######################### employee session accessing ###################################");
+
+		UserDetails userDetails = User.withUsername("user1")
+				.password("password")
+				.roles("USER")
+				.build();
+		PreAuthenticatedAuthenticationToken authentication = new PreAuthenticatedAuthenticationToken(userDetails, "",
+				userDetails.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+	}
 
 	@RequestMapping("/authorized")
 	public EmployeeDetails authorizedCode(@RequestParam String code) throws IOException {
@@ -163,8 +186,7 @@ public class AuthController {
 		Response response = client.newCall(request).execute();
 		String responseBody = response.body().string();
 		log.info("Response body: {}", responseBody);
-		List<EmployeeDetailsResponse> list =gson.fromJson(responseBody, new TypeToken<List<EmployeeDetailsResponse>>() {}.getType());
-		return list;
+		return gson.fromJson(responseBody, new TypeToken<List<EmployeeDetailsResponse>>() {}.getType());
 	}
 
 	@Data

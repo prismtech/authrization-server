@@ -1,4 +1,4 @@
-package com.repyute.security.configuration;
+package com.prismtech.security.configuration;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;

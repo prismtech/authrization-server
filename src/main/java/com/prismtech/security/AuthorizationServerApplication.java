@@ -1,4 +1,4 @@
-package com.repyute.security;
+package com.prismtech.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

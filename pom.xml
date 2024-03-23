@@ -8,7 +8,7 @@
 		<version>2.6.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.repyute.security</groupId>
+	<groupId>com.prismtech.security</groupId>
 	<artifactId>authorization-server</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>authorization-server</name>

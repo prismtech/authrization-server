@@ -1,4 +1,4 @@
-package com.repyute.security.configuration;
+package com.prismtech.security.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;

@@ -1,4 +1,4 @@
-package com.repyute.security.model;
+package com.prismtech.security.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -11,18 +11,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EmployeeDetailsResponse {
-    boolean employeeFound;
     String employeeId;
     String name;
     String employeeNo;
     String dateOfJoin;
     String email;
-    String leavingDate;
+    String dateOfExit;
     String status;
     String designation;
-    long ctc;
-    boolean incomeVerified;
-    String eligibleToRehire;
-    String exitFormalitiesCompleted;
-    String reasonForLeaving;
 }

@@ -1,4 +1,4 @@
-package com.repyute.security.model;
+package com.prismtech.security.model;
 
 import lombok.Data;
 

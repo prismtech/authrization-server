@@ -1,4 +1,4 @@
-package com.repyute.security.configuration;
+package com.prismtech.security.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -30,6 +30,7 @@ public class LoginConfiguration {
 				.antMatchers("/images/**").permitAll()
 				.antMatchers("/authorized").permitAll()
 				.antMatchers("/authorized-local").permitAll()
+				.antMatchers("/employee-session").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.formLogin().loginPage("/login");
